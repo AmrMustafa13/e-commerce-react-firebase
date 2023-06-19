@@ -1,7 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
+import { ProductsContext } from "../contexts/productsContext";
+import ProductsGrid from "../components/ProductsGrid";
 
 const Shop = () => {
-  return <div>Shop</div>;
+  const { products } = useContext(ProductsContext);
+
+  return (
+    <div>
+      <ProductsGrid products={products} />
+    </div>
+  );
 };
 
 export default Shop;

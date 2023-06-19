@@ -1,12 +1,16 @@
 import React, { useContext } from "react";
 import { Outlet, Link } from "react-router-dom";
-import Logo from "../assets/crown.svg";
+import CROWN_ICON from "../assets/crown.svg";
 import { AuthContext } from "../contexts/authContext";
 import { auth } from "../config/firebase";
 import { signOut } from "firebase/auth";
+import CartICon from "./CartIcon";
+import CartDropdown from "./CartDropdown";
+import { CartContext } from "../contexts/cartContext";
 
 const Navbar = () => {
   const { user } = useContext(AuthContext);
+  const { isCartOpen } = useContext(CartContext);
 
   const hanldeLogout = async () => {
     try {
@@ -21,10 +25,12 @@ const Navbar = () => {
       <nav
         className="
         flex justify-between items-center h-16
-        shadow-md font-mono px-4"
+        shadow-md font-mono px-4
+          relative
+        "
       >
         <Link to="/">
-          <img src={Logo} alt="Logo" />
+          <img src={CROWN_ICON} alt="Logo" />
         </Link>
         <ul
           className="
@@ -48,7 +54,11 @@ const Navbar = () => {
               <Link to="/signin">Sign In</Link>
             </li>
           )}
+          <li>
+            <CartICon />
+          </li>
         </ul>
+        {isCartOpen && <CartDropdown />}
       </nav>
       <Outlet />
     </>
