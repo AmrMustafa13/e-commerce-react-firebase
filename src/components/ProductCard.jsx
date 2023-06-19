@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
+import { CartContext } from "../contexts/cartContext";
 
 const ProductCard = ({ product }) => {
   const { name, price, imageUrl } = product;
+
+  const { addItemToCart } = useContext(CartContext);
 
   return (
     <div
@@ -71,6 +74,7 @@ const ProductCard = ({ product }) => {
         duration-300
         ease-in-out
       "
+        onClick={() => addItemToCart(product)}
       >
         Add to card
       </button>

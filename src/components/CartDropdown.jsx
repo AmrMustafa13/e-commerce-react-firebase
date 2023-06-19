@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { CartContext } from "../contexts/cartContext";
+import CartItem from "./CartItem";
 
 const CartDropdown = () => {
+  const { cartItems } = useContext(CartContext);
+
   return (
     <div
       className="absolute
@@ -29,18 +32,9 @@ const CartDropdown = () => {
         scrollbar-hide
       "
       >
-        <li>Item 1</li>
-        <li>Item 2</li>
-        <li>Item 3</li>
-        <li>Item 1</li>
-        <li>Item 2</li>
-        <li>Item 3</li>
-        <li>Item 1</li>
-        <li>Item 2</li>
-        <li>Item 3</li>
-        <li>Item 1</li>
-        <li>Item 2</li>
-        <li>Item 3</li>
+        {cartItems.map((cartItem) => (
+          <CartItem key={cartItem.id} cartItem={cartItem} />
+        ))}
       </ul>
       <button
         className="

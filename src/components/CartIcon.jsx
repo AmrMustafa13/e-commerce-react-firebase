@@ -3,7 +3,7 @@ import CART_ICON from "../assets/shopping-bag.svg";
 import { CartContext } from "../contexts/cartContext";
 
 const CartIcon = () => {
-  const { isCartOpen, setIsCartOpen } = useContext(CartContext);
+  const { isCartOpen, setIsCartOpen, cartCount } = useContext(CartContext);
 
   return (
     <div
@@ -50,7 +50,7 @@ const CartIcon = () => {
         -translate-y-1/2
         "
       >
-        10
+        {cartCount}
       </span>
     </div>
   );
