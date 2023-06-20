@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import Shop from "./pages/Shop";
 import Signup from "./pages/Signup";
 import Signin from "./pages/Signin";
+import Checkout from "./pages/Checkout";
 import Navbar from "./components/Navbar";
 import { Routes, Route } from "react-router-dom";
 
@@ -16,6 +17,7 @@ const App = () => {
           <Route path="shop" element={<Shop />} />
           <Route path="signin" element={<Signin />} />
           <Route path="signup" element={<Signup />} />
+          <Route path="checkout" element={<Checkout />} />
         </Route>
       </Routes>
     </div>
