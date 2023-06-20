@@ -11,11 +11,38 @@ const Checkout = () => {
   } = useContext(CartContext);
 
   return (
-    <div>
-      <table>
-        <thead>
+    <div
+      className="
+      container
+      mx-auto
+      p-4
+      flex
+      flex-col
+      justify-center
+      items-center
+      text-center
+    "
+    >
+      <table
+        className="
+        table-auto
+        w-full
+      "
+      >
+        <thead
+          className="
+        border-b-2
+        border-gray-500
+        "
+        >
           <tr>
-            <th>Product</th>
+            <th
+              className="
+            pb-2
+            "
+            >
+              Product
+            </th>
             <th>Description</th>
             <th>Quantity</th>
             <th>Price</th>
@@ -26,15 +53,36 @@ const Checkout = () => {
           {cartItems.map((cartItem) => (
             <tr key={cartItem.id}>
               <td>
-                <img src={cartItem.imageUrl} alt={cartItem.name} />
+                <img
+                  src={cartItem.imageUrl}
+                  alt={cartItem.name}
+                  className="
+                w-20
+                h-20
+                object-cover
+                rounded
+                mx-auto
+                "
+                />
               </td>
               <td>{cartItem.name}</td>
               <td>
-                <button onClick={() => decreaseItemQuantity(cartItem)}>
+                <button
+                  onClick={() => decreaseItemQuantity(cartItem)}
+                  className="
+                mr-2
+                
+                "
+                >
                   &#10094;
                 </button>
                 {cartItem.quantity}
-                <button onClick={() => addItemToCart(cartItem)}>
+                <button
+                  onClick={() => addItemToCart(cartItem)}
+                  className="
+                ml-2
+                "
+                >
                   &#10095;
                 </button>
               </td>
@@ -50,10 +98,31 @@ const Checkout = () => {
         <tfoot>
           <tr>
             <td colSpan="5">
-              <button>Checkout</button>
+              <button
+                className="
+              bg-gray-900
+              text-white
+              px-4
+              py-2
+              rounded
+              hover:bg-gray-800
+              transition  
+              duration-300
+              ease-in-out
+              "
+              >
+                Checkout
+              </button>
             </td>
             <td>
-              <span>Total: ${cartTotal}</span>
+              <span
+                className="
+              font-bold
+              text-2xl
+              "
+              >
+                Total: ${cartTotal}
+              </span>
             </td>
           </tr>
         </tfoot>
