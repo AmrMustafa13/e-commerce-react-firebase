@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 
 const addCartItem = (cartItems, cartItemToAdd) => {
   const existingCartItem = cartItems.find(
@@ -30,6 +30,8 @@ export const CartContext = createContext({
 export const CartContextProvider = ({ children }) => {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [cartItems, setCartItems] = useState([]);
+  const [cartCount, setCartCount] = useState(0);
+  const [cartTotal, setCartTotal] = useState(0);
 
   const addItemToCart = (item) => {
     setCartItems(addCartItem(cartItems, item));
@@ -53,15 +55,12 @@ export const CartContextProvider = ({ children }) => {
     setCartItems(cartItems.filter((cartItem) => cartItem.id !== item.id));
   };
 
-  const cartCount = cartItems.reduce(
-    (accumulatedQuantity, cartItem) => accumulatedQuantity + cartItem.quantity,
-    0
-  );
-
-  const cartTotal = cartItems.reduce(
-    (acc, cartItem) => acc + cartItem.quantity * cartItem.price,
-    0
-  );
+  useEffect(() => {
+    setCartCount(cartItems.reduce((acc, item) => acc + item.quantity, 0));
+    setCartTotal(
+      cartItems.reduce((acc, item) => acc + item.quantity * item.price, 0)
+    );
+  }, [cartItems]);
 
   const value = {
     isCartOpen,
