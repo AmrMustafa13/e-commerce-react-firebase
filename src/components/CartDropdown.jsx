@@ -35,9 +35,13 @@ const CartDropdown = () => {
         scrollbar-hide
       "
       >
-        {cartItems.map((cartItem) => (
-          <CartItem key={cartItem.id} cartItem={cartItem} />
-        ))}
+        {cartItems.length !== 0 ? (
+          cartItems.map((cartItem) => (
+            <CartItem key={cartItem.id} cartItem={cartItem} />
+          ))
+        ) : (
+          <div className="text-center">Your cart is empty</div>
+        )}
       </ul>
       <button
         className="
