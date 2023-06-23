@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const CategoryItem = ({ category }) => {
   return (
@@ -63,7 +64,7 @@ const CategoryItem = ({ category }) => {
             cursor-pointer
       "
       >
-        Shop Now
+        <Link to="/shop">Shop Now</Link>
       </span>
     </div>
   );
