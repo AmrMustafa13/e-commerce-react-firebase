@@ -9,8 +9,6 @@ const PaymentForm = () => {
   const { cartTotal } = useContext(CartContext);
   const { user } = useContext(AuthContext);
 
-  console.log(cartTotal);
-
   const stripe = useStripe();
   const elements = useElements();
 
