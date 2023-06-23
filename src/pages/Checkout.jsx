@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { CartContext } from "../contexts/cartContext";
+import PaymentForm from "../components/PaymentForm";
 
 const Checkout = () => {
   const {
@@ -97,7 +98,8 @@ const Checkout = () => {
         </tbody>
         <tfoot>
           <tr>
-            <td colSpan="5">
+            <td colSpan="2">
+              <PaymentForm />
               <button
                 className="
               bg-gray-900

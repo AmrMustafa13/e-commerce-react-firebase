@@ -6,6 +6,8 @@ import { BrowserRouter } from "react-router-dom";
 import { AuthContextProvider } from "./contexts/authContext";
 import { CategoriesContextProvider } from "./contexts/categoriesContext.jsx";
 import { CartContextProvider } from "./contexts/cartContext.jsx";
+import { Elements } from "@stripe/react-stripe-js";
+import { stripePromise } from "./config/stripe.js";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
@@ -13,7 +15,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <AuthContextProvider>
         <CategoriesContextProvider>
           <CartContextProvider>
-            <App />
+            <Elements stripe={stripePromise}>
+              <App />
+            </Elements>
           </CartContextProvider>
         </CategoriesContextProvider>
       </AuthContextProvider>
