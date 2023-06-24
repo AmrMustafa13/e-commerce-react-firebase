@@ -12,15 +12,14 @@ import { Routes, Route } from "react-router-dom";
 const App = () => {
   return (
     <div>
+      <Navbar />
       <Routes>
-        <Route path="/" element={<Navbar />}>
-          <Route index element={<Home />} />
-          <Route path="shop" element={<Shop />} />
-          <Route path="shop/:category" element={<SingleCategory />} />
-          <Route path="signin" element={<Signin />} />
-          <Route path="signup" element={<Signup />} />
-          <Route path="checkout" element={<Checkout />} />
-        </Route>
+        <Route path="/" element={<Home />} />
+        <Route path="/shop" element={<Shop />} />
+        <Route path="/shop/:category" element={<SingleCategory />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/signin" element={<Signin />} />
+        <Route path="/checkout" element={<Checkout />} />
       </Routes>
     </div>
   );

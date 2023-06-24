@@ -26,7 +26,7 @@ const SingleCategory = () => {
   }, [category]);
 
   return (
-    <div>
+    <div className="mb-8">
       {isLoading ? (
         <div>Loading...</div>
       ) : (

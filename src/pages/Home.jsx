@@ -1,10 +1,12 @@
 import React from "react";
 import CategoriesGrid from "../components/CategoriesGrid";
 import { Link } from "react-router-dom";
+import Slider from "../components/Slider";
 
 const Home = () => {
   return (
-    <div className="text-center py-4">
+    <div className="text-center">
+      <Slider />
       <button
         className="
         bg-gray-800
@@ -12,7 +14,7 @@ const Home = () => {
         text-2xl
         px-4
         py-2
-        mb-2
+        mt-4
         rounded-md
         font-semibold
         tracking-wider
@@ -21,7 +23,7 @@ const Home = () => {
         
       "
       >
-        <Link to="/shop">Shop Now</Link>
+        <Link to="/shop">Go to Shop</Link>
       </button>
       <CategoriesGrid />
     </div>

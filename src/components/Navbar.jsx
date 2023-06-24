@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
-import { Outlet, Link } from "react-router-dom";
-import CROWN_ICON from "../assets/crown.svg";
+import { Link } from "react-router-dom";
 import { AuthContext } from "../contexts/authContext";
 import { auth } from "../config/firebase";
 import { signOut } from "firebase/auth";
@@ -68,7 +67,6 @@ const Navbar = () => {
         </ul>
         {isCartOpen && <CartDropdown />}
       </nav>
-      <Outlet />
     </>
   );
 };
