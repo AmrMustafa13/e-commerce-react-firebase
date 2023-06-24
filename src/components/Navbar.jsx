@@ -30,7 +30,15 @@ const Navbar = () => {
         "
       >
         <Link to="/">
-          <img src={CROWN_ICON} alt="Logo" />
+          <h1
+            className="
+          text-2xl
+          font-bold
+          text-gray-800
+          "
+          >
+            Fashionex
+          </h1>
         </Link>
         <ul
           className="

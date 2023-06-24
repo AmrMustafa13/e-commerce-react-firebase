@@ -64,7 +64,7 @@ const CategoryItem = ({ category }) => {
             cursor-pointer
       "
       >
-        <Link to="/shop">Shop Now</Link>
+        <Link to={`/shop/${category.title}`}>Show Collections</Link>
       </span>
     </div>
   );
