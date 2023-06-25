@@ -13,7 +13,7 @@ This is an e-commerce clothing app built with React, utilizing various technolog
 
 ## Tech Stack:
 
-React, Firebase, Stripe, Context API, HTML, CSS, JavaScript
+React, Firebase, Stripe, Context API, Tailwind CSS.
 
 ## Installation
 
