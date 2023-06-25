@@ -8,7 +8,7 @@ import { toast } from "react-toastify";
 const PaymentForm = () => {
   const [isPaymentLoading, setIsPaymentLoading] = useState(false);
 
-  const { cartTotal } = useContext(CartContext);
+  const { cartTotal, clearCart } = useContext(CartContext);
   const { user } = useContext(AuthContext);
 
   const stripe = useStripe();
@@ -49,6 +49,7 @@ const PaymentForm = () => {
     }
 
     if (paymentResult.paymentIntent.status === "succeeded") {
+      clearCart();
       toast.success("Payment successful!");
     }
   };

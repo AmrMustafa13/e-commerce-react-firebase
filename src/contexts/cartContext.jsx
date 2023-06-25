@@ -34,6 +34,7 @@ export const CartContext = createContext({
   decreaseItemQuantity: () => {},
   removeItemFromCart: () => {},
   cartTotal: 0,
+  clearCart: () => {},
 });
 
 export const CartContextProvider = ({ children }) => {
@@ -80,6 +81,10 @@ export const CartContextProvider = ({ children }) => {
     });
   };
 
+  const clearCart = () => {
+    setCartItems([]);
+  };
+
   useEffect(() => {
     setCartCount(cartItems.reduce((acc, item) => acc + item.quantity, 0));
     setCartTotal(
@@ -96,6 +101,7 @@ export const CartContextProvider = ({ children }) => {
     decreaseItemQuantity,
     removeItemFromCart,
     cartTotal,
+    clearCart,
   };
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
