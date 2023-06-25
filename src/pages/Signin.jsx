@@ -9,6 +9,7 @@ import { doc, setDoc, getDoc } from "firebase/firestore";
 import { Link } from "react-router-dom";
 import GoogleButton from "react-google-button";
 import { INITIAL_STATE, formReducer } from "../reducers/formReducer.js";
+import { toast } from "react-toastify";
 
 const Signin = () => {
   const [state, dispatch] = useReducer(formReducer, INITIAL_STATE);
@@ -19,7 +20,7 @@ const Signin = () => {
     try {
       await signInWithEmailAndPassword(auth, email, password);
     } catch (error) {
-      console.log("Error signing in", error.message);
+      toast.error(error.message.substring(10));
     }
     dispatch({ type: "CLEAR_FORM" });
   };
@@ -44,7 +45,7 @@ const Signin = () => {
           createdAt,
         });
       } catch (error) {
-        console.log("Error creating user", error.message);
+        toast.error(error.message.substring(10));
       }
     }
     return userRef;

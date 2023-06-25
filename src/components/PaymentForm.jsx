@@ -2,6 +2,8 @@ import React, { useState, useContext } from "react";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import { CartContext } from "../contexts/cartContext";
 import { AuthContext } from "../contexts/authContext";
+import Spinner from "./Spinner";
+import { toast } from "react-toastify";
 
 const PaymentForm = () => {
   const [isPaymentLoading, setIsPaymentLoading] = useState(false);
@@ -43,23 +45,36 @@ const PaymentForm = () => {
     setIsPaymentLoading(false);
 
     if (paymentResult.error) {
-      console.log(paymentResult.error.message);
+      toast.error(paymentResult.error.message);
     }
 
     if (paymentResult.paymentIntent.status === "succeeded") {
-      console.log("Payment Success");
+      toast.success("Payment successful!");
     }
   };
 
   return (
-    <form onSubmit={handlePayment}>
+    <form
+      onSubmit={handlePayment}
+      className="
+    w-full
+    max-w-sm
+    mx-auto
+    bg-gray-100
+    shadow-md
+    rounded
+    px-8
+    pt-6
+    pb-8
+    mb-4
+    "
+    >
       <CardElement />
       <button
         type="submit"
         className="
               bg-gray-900
               text-white
-              px-4
               py-2
               rounded
               hover:bg-gray-800
@@ -67,10 +82,15 @@ const PaymentForm = () => {
               duration-300
               ease-in-out
               mb-4
+              w-full
+              h-14
+              flex
+              justify-center
+              items-center
               "
         disabled={isPaymentLoading}
       >
-        {isPaymentLoading ? "Processing..." : "Pay Now"}
+        {isPaymentLoading ? <Spinner /> : "Pay Now"}
       </button>
     </form>
   );

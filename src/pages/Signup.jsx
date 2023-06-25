@@ -4,6 +4,7 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { Link } from "react-router-dom";
 import { doc, setDoc, getDoc } from "firebase/firestore";
 import { INITIAL_STATE, formReducer } from "../reducers/formReducer.js";
+import { toast } from "react-toastify";
 
 const Signup = () => {
   const [state, dispatch] = useReducer(formReducer, INITIAL_STATE);
@@ -12,7 +13,7 @@ const Signup = () => {
   const handleSignup = async (e) => {
     e.preventDefault();
     if (password !== confirmPassword) {
-      alert("Passwords don't match");
+      toast.error("Passwords do not match");
       return;
     }
     try {
@@ -28,11 +29,11 @@ const Signup = () => {
             createdAt,
           });
         } catch (error) {
-          console.log("Error creating user", error.message);
+          toast.error(error.message);
         }
       }
     } catch (error) {
-      console.log("Error creating user", error.message);
+      toast.error(error.message.substring(10));
     }
     dispatch({ type: "CLEAR_FORM" });
   };

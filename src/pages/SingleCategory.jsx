@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { db } from "../config/firebase";
 import { doc, getDoc } from "firebase/firestore";
 import ProductCard from "../components/ProductCard";
+import Spinner from "../components/Spinner";
 
 const SingleCategory = () => {
   const { category } = useParams();
@@ -28,7 +29,15 @@ const SingleCategory = () => {
   return (
     <div className="mb-8">
       {isLoading ? (
-        <div>Loading...</div>
+        <div
+          className="flex
+         justify-center
+         items-center
+         mt-4
+         "
+        >
+          <Spinner />
+        </div>
       ) : (
         <div className="flex flex-col items-center">
           <h1 className="text-4xl font-bold text-center my-8">

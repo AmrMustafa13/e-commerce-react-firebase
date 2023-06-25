@@ -2,11 +2,29 @@ import React, { useContext } from "react";
 import { CartContext } from "../contexts/cartContext";
 import CartItem from "./CartItem";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../contexts/authContext";
+import { toast } from "react-toastify";
 
 const CartDropdown = () => {
   const { cartItems } = useContext(CartContext);
+  const { user } = useContext(AuthContext);
 
   const navigate = useNavigate();
+
+  const handleRedirectToCheckout = () => {
+    if (user) {
+      navigate("/checkout");
+    } else {
+      toast.error("You need to login first", {
+        position: "top-left",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        draggable: true,
+      });
+      navigate("/signin");
+    }
+  };
 
   return (
     <div
@@ -56,7 +74,7 @@ const CartDropdown = () => {
         duration-300
         ease-in-out
         "
-        onClick={() => navigate("/checkout")}
+        onClick={handleRedirectToCheckout}
       >
         GO TO CHECKOUT
       </button>

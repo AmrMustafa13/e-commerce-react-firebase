@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./App.css";
 import Home from "./pages/Home";
 import Shop from "./pages/Shop";
@@ -7,9 +7,16 @@ import Signin from "./pages/Signin";
 import Checkout from "./pages/Checkout";
 import Navbar from "./components/Navbar";
 import SingleCategory from "./pages/SingleCategory";
-import { Routes, Route } from "react-router-dom";
+import NotFound from "./pages/NotFound";
+import { Routes, Route, redirect } from "react-router-dom";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
+import { AuthContext } from "./contexts/authContext";
+import { Navigate } from "react-router-dom";
 
 const App = () => {
+  const { user } = useContext(AuthContext);
+
   return (
     <div>
       <Navbar />
@@ -17,10 +24,21 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/shop" element={<Shop />} />
         <Route path="/shop/:category" element={<SingleCategory />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/signin" element={<Signin />} />
-        <Route path="/checkout" element={<Checkout />} />
+        <Route
+          path="/checkout"
+          element={user ? <Checkout /> : <Navigate to="/signin" />}
+        />
+        <Route
+          path="/signup"
+          element={user ? <Navigate to="/" /> : <Signup />}
+        />
+        <Route
+          path="/signin"
+          element={user ? <Navigate to="/" /> : <Signin />}
+        />
+        <Route path="*" element={<NotFound />} />
       </Routes>
+      <ToastContainer />
     </div>
   );
 };

@@ -1,9 +1,18 @@
 import { createContext, useState, useEffect } from "react";
+import { toast } from "react-toastify";
 
 const addCartItem = (cartItems, cartItemToAdd) => {
   const existingCartItem = cartItems.find(
     (cartItem) => cartItem.id === cartItemToAdd.id
   );
+
+  toast.success("Item added to cart", {
+    position: "top-left",
+    autoClose: 2000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    draggable: true,
+  });
 
   if (existingCartItem) {
     return cartItems.map((cartItem) =>
@@ -49,10 +58,26 @@ export const CartContextProvider = ({ children }) => {
         )
       );
     }
+
+    toast.error("Item removed from cart", {
+      position: "top-left",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      draggable: true,
+    });
   };
 
   const removeItemFromCart = (item) => {
     setCartItems(cartItems.filter((cartItem) => cartItem.id !== item.id));
+
+    toast.error("Item removed from cart", {
+      position: "top-left",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      draggable: true,
+    });
   };
 
   useEffect(() => {
