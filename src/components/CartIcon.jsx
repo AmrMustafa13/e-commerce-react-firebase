@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { CartContext } from "../contexts/cartContext";
+import { FaShoppingCart } from "react-icons/fa";
 
 const CartIcon = () => {
   const { isCartOpen, setIsCartOpen, cartCount } = useContext(CartContext);
@@ -7,31 +8,27 @@ const CartIcon = () => {
   return (
     <div
       className="
-        flex
-        items-center
-        justify-center
-        w-10
-        h-10
-        bg-gray-100
-        rounded-full
-        cursor-pointer
-        hover:bg-gray-200
-        transition
-        duration-300
-        ease-in-out
-        relative
-    "
+      relative
+      cursor-pointer
+      "
       onClick={() => setIsCartOpen(!isCartOpen)}
     >
+      <FaShoppingCart className="text-gray-800 text-xl" />
       <span
         className="
         absolute
-        text-sm
-        top-1/2
-        left-1/2
-        transform
-        -translate-x-1/2
-        -translate-y-1/2
+        -top-2
+        -right-2
+        bg-red-500
+        text-white
+        w-4
+        h-4
+        rounded-full
+        flex
+        items-center
+        justify-center
+        font-bold
+        text-xs
         "
       >
         {cartCount}

@@ -8,7 +8,7 @@ import Checkout from "./pages/Checkout";
 import Navbar from "./components/Navbar";
 import SingleCategory from "./pages/SingleCategory";
 import NotFound from "./pages/NotFound";
-import { Routes, Route, redirect } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
 import { AuthContext } from "./contexts/authContext";

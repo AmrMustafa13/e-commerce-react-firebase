@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import { AuthContext } from "../contexts/authContext";
 import { auth } from "../config/firebase";
 import { signOut } from "firebase/auth";
@@ -24,7 +24,7 @@ const Navbar = () => {
       <nav
         className="
         flex justify-between items-center h-16
-        shadow-md font-mono px-4
+        shadow-md px-4
           relative
         "
       >
@@ -47,10 +47,28 @@ const Navbar = () => {
         "
         >
           <li>
-            <Link to="/">Home</Link>
+            <NavLink
+              to="/"
+              style={({ isActive }) => {
+                if (isActive) {
+                  return { color: "red" };
+                }
+              }}
+            >
+              Home
+            </NavLink>
           </li>
           <li>
-            <Link to="/shop">Shop</Link>
+            <NavLink
+              to="/shop"
+              style={({ isActive }) => {
+                if (isActive) {
+                  return { color: "red" };
+                }
+              }}
+            >
+              Shop
+            </NavLink>
           </li>
           {user ? (
             <li>
@@ -58,7 +76,7 @@ const Navbar = () => {
             </li>
           ) : (
             <li>
-              <Link to="/signin">Sign In</Link>
+              <NavLink to="/signin">Sign In</NavLink>
             </li>
           )}
           <li>
