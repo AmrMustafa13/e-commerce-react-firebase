@@ -66,6 +66,7 @@ const Checkout = () => {
                     object-cover
                     rounded
                     mx-auto
+                    p-1
                     "
                   />
                 </td>

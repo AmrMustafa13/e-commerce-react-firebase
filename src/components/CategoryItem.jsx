@@ -47,21 +47,20 @@ const CategoryItem = ({ category }) => {
       </h2>
       <span
         className="
-            bg-gray-800
-            text-white
-            px-4
-            py-2
-            mb-2
-            rounded-md
+          bg-red-500
+          text-white
+          px-4
+          py-1
+          mb-2
+          rounded-full
             text-sm
-            font-semibold
-            tracking-wider
-            shadow-lg
-            hover:bg-gray-700
+            cursor-pointer
             transition
             duration-500
             ease-in-out
-            cursor-pointer
+            transform
+            hover:-translate-y-1
+            hover:scale-110
       "
       >
         <Link to={`/shop/${category.title}`}>Show Collections</Link>

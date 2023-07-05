@@ -8,11 +8,16 @@ const CategoryRow = ({ category }) => {
       <Link
         to={`/shop/${category.title.toLowerCase()}`}
         className="
-            text-2xl
-            font-bold
-            text-gray-800
-            uppercase
-            hover:text-gray-700
+          text-2xl
+          font-bold
+          text-gray-800
+          uppercase
+          mb-4
+          inline-block
+          hover:text-red-500
+          transition
+          duration-500
+          ease-in-out
         "
       >
         {category.title}

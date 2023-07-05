@@ -29,9 +29,11 @@ const CategoriesGrid = () => {
     <div
       className="
         grid grid-cols-2
-        md:grid-cols-3
+        md:grid-cols-4
         gap-4
         p-4
+        md:p-8
+        lg:p-16
     "
     >
       {categories.map((category) => (
